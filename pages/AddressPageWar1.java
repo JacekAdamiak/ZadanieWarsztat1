@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import java.util.List;
 
 public class AddressPageWar1 {
     private static WebDriver driver;
@@ -26,6 +27,12 @@ public class AddressPageWar1 {
 
     @FindBy(xpath = "//*[@id=\"content\"]/div/div/form/footer/button")
     WebElement saveNewAddressButtonWar1;
+
+    @FindBy(xpath = "//*[@itemprop='name']")
+    List<WebElement> goToAddressesListLinkWar1;
+
+//    List<WebElement> deleteAddressesListWar1;
+//        @FindBy(xpath = "//*[@data-link-action='edit-address']")
 
     public AddressPageWar1(WebDriver driver) {
         this.driver = driver;
@@ -65,29 +72,10 @@ public class AddressPageWar1 {
         saveNewAddressButtonWar1.click();
     }
 
+    public void goToAddressesListLinkWar1() {
+        goToAddressesListLinkWar1.get(2).click();
+    }
 
-
-
-
-
-
-//    public void inputAddressDataWar1(String address, String city, String zipCode) {
-//        addressInputWar1.click();
-//        addressInputWar1.clear();
-//        addressInputWar1.sendKeys(address);
-//
-//        cityInputWar1.click();
-//        cityInputWar1.clear();
-//        cityInputWar1.sendKeys(city);
-//
-//        zipCodeInputWar1.click();
-//        zipCodeInputWar1.clear();
-//        zipCodeInputWar1.sendKeys(zipCode);
-//
-//        saveNewAddressButtonWar1.click();
-//
-//
-//    }
 
 
 }

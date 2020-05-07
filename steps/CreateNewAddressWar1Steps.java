@@ -97,7 +97,28 @@ public class CreateNewAddressWar1Steps {
         MyAddressesPageWar1 myAddressesPageWar1 = new MyAddressesPageWar1(driver);
         System.out.println("Taki oto komunikat !!");
         System.out.println(myAddressesPageWar1.getAddressSuccessfullyAddedInfoWar1());
-        Assert.assertEquals("Address successfully added!", myAddressesPageWar1.getAddressSuccessfullyAddedInfoWar1());
+        Assert.assertEquals("Address successfully added!",
+                myAddressesPageWar1.getAddressSuccessfullyAddedInfoWar1());
+
+//        String addressEntered = "Janek Bury\n" +
+//                "Przemysłowa\n" +
+//                "Wodzisław\n" +
+//                "00-223\n" +
+//                "United Kingdom\n" +
+//                "551-223-123";
+//
+//        Assert.assertEquals(addressEntered, myAddressesPageWar1.getLastAddress());
+        System.out.println("Ilość adresów: "+
+                String.valueOf(myAddressesPageWar1.getNumberOfAddresses()));
+//        System.out.println("Treść wprowadzonego adresu: "+addressEntered);
+        System.out.println("Treść ostatniego adresu: "+myAddressesPageWar1.getLastAddress());
+        myAddressesPageWar1.updateLastAddress();
+
+
+        AddressPageWar1 addressPageWar1 = new AddressPageWar1(driver);
+        addressPageWar1.goToAddressesListLinkWar1();
+
+//        myAddressesPageWar1.deleteLastAddress();
     }
 
 

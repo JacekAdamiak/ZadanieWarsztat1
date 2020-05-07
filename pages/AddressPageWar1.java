@@ -12,7 +12,6 @@ public class AddressPageWar1 {
     @FindBy(name = "alias")
     WebElement aliasInputWar1;
 
-
     @FindBy(name = "address1")
     WebElement addressInputWar1;
 
@@ -76,6 +75,24 @@ public class AddressPageWar1 {
         goToAddressesListLinkWar1.get(2).click();
     }
 
+    public String getAliasWar1() {
+        return aliasInputWar1.getAttribute("value");
+    }
 
+    public String getAddressWar1() {
+        return addressInputWar1.getAttribute("value");
+    }
+
+    public String getCityWar1() {
+        return cityInputWar1.getAttribute("value");
+    }
+
+    public String getZipCodeWar1() {
+        return zipCodeInputWar1.getAttribute("value");
+    }
+
+    public String getPhoneCodeWar1() {
+        return phoneInputWar1.getAttribute("value");
+    }
 
 }

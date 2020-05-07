@@ -23,22 +23,21 @@ public class CreateNewAddressWar1Steps {
         driver = new ChromeDriver();
         // Zmaksymalizuj okno przeglądarki
         driver.manage().window().maximize();
-//        return driver;
-        // Przejdź do Google
+        // Przejdź do strony logowania
         driver.get("https://prod-kurs.coderslab.pl/index.php?controller=authentication");
-//        driver.get("http://www.google.com");
     }
 
     @When("user successfully logged in")
-//    @When("a keyword (.*) is entered in input field")
     public void successfulLogin() {
         LoginPageWar1 loginPageWar1 = new LoginPageWar1(driver);
         loginPageWar1.loginAsWar1("janek.bury@webowo.pl", "JanekBury");
 
+        HeaderWar1 headerWar1 = new HeaderWar1(driver);
+        Assert.assertEquals("Janek Bury", headerWar1.getLoggedWar1());
+        System.out.println("Zalogowany jako: "+headerWar1.getLoggedWar1());
     }
 
-    @Then("user goes to view customer account")
-//    @Then("the first one should contain (.*)")
+    @And("user goes to view customer account")
     public void userGoesToViewCustomerAccount() {
         HeaderWar1 headerWar1 = new HeaderWar1(driver);
         headerWar1.goToUserInformationViewWar1();
@@ -92,47 +91,34 @@ public class CreateNewAddressWar1Steps {
         addressPageWar1.saveNewAddressButtonWar1();
     }
 
-    @And("user sees information of new address successfully added")
+    @Then("user sees information of new address successfully added")
     public void addressSuccessfullyAdded() {
         MyAddressesPageWar1 myAddressesPageWar1 = new MyAddressesPageWar1(driver);
-        System.out.println("Taki oto komunikat !!");
-        System.out.println(myAddressesPageWar1.getAddressSuccessfullyAddedInfoWar1());
         Assert.assertEquals("Address successfully added!",
                 myAddressesPageWar1.getAddressSuccessfullyAddedInfoWar1());
 
-//        String addressEntered = "Janek Bury\n" +
-//                "Przemysłowa\n" +
-//                "Wodzisław\n" +
-//                "00-223\n" +
-//                "United Kingdom\n" +
-//                "551-223-123";
-//
-//        Assert.assertEquals(addressEntered, myAddressesPageWar1.getLastAddress());
-        System.out.println("Ilość adresów: "+
-                String.valueOf(myAddressesPageWar1.getNumberOfAddresses()));
-//        System.out.println("Treść wprowadzonego adresu: "+addressEntered);
-        System.out.println("Treść ostatniego adresu: "+myAddressesPageWar1.getLastAddress());
         myAddressesPageWar1.updateLastAddress();
 
-
         AddressPageWar1 addressPageWar1 = new AddressPageWar1(driver);
+        Assert.assertEquals("Biurowy Janka", addressPageWar1.getAliasWar1());
+        Assert.assertEquals("Przemysłowa", addressPageWar1.getAddressWar1());
+        Assert.assertEquals("Wodzisław", addressPageWar1.getCityWar1());
+        Assert.assertEquals("00-223", addressPageWar1.getZipCodeWar1());
+        Assert.assertEquals("551-223-123", addressPageWar1.getPhoneCodeWar1());
+
         addressPageWar1.goToAddressesListLinkWar1();
-
-//        myAddressesPageWar1.deleteLastAddress();
     }
+    @And("user delete last address")
+    public void deleteLastAddressFromAddressesList() {
+        MyAddressesPageWar1 myAddressesPageWar1 = new MyAddressesPageWar1(driver);
+        int numberOfAddressesBefore = myAddressesPageWar1.getNumberOfAddresses();
+        myAddressesPageWar1.deleteLastAddress();
+        int numberOfAddressesAfter = myAddressesPageWar1.getNumberOfAddresses();
+        Assert.assertEquals(numberOfAddressesBefore, numberOfAddressesAfter+1);
+        Assert.assertEquals("Address successfully deleted!",
+                myAddressesPageWar1.getAddressSuccessfullyAddedInfoWar1());
 
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
     @And("close browser")
     public void closeBrowser() {

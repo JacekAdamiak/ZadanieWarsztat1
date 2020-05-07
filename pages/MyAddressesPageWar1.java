@@ -10,12 +10,6 @@ import java.util.List;
 public class MyAddressesPageWar1 {
     private static WebDriver driver;
 
-//    @FindBy(className = "material-icons")
-//    WebElement createNewAddressJaca;
-
-//    @FindBy(xpath = "//*[@id=\"content\"]/div[5]/a")
-//    WebElement createNewAddressJaca;
-
     @FindBy(xpath = "//*[@data-link-action='add-address']")
     WebElement createNewAddressWar1;
 
@@ -31,12 +25,6 @@ public class MyAddressesPageWar1 {
     @FindBy(xpath = "//*[@data-link-action='delete-address']")
     List<WebElement> deleteAddressesListWar1;
 
-
-//    @FindBy(xpath = "//*[@class='address-footer']/a[1]")
-//    List<WebElement> updateAddressesListWar1;
-
-//    @FindBy(className = "address-body")
-//    List<WebElement> addressesListWar1;
 
     public MyAddressesPageWar1(WebDriver driver) {
         this.driver = driver;
@@ -56,8 +44,6 @@ public class MyAddressesPageWar1 {
     }
 
     public String getLastAddress () {
-//        String output = "Taki błędny to jest adres";
-//        return output;
         int lastAddress = addressesListWar1.size()-1;
         return addressesListWar1.get(lastAddress).getText();
     }
@@ -71,13 +57,5 @@ public class MyAddressesPageWar1 {
         int lastAddress = addressesListWar1.size()-1;
         deleteAddressesListWar1.get(lastAddress).click();
     }
-
-
-//   //*[@id="address-2726"]/div[2]/a[1]
-//    //*[@id="address-2732"]/div[2]/a[1]
-
-
-
-
 
 }

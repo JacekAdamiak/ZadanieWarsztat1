@@ -10,10 +10,8 @@ import org.openqa.selenium.support.PageFactory;
 public class HeaderWar1 {
     private static WebDriver driver;
 
-
     @FindBy(xpath = "//a[@class='account']")
-//    @FindBy(xpath = "//*[@id=\"_desktop_user_info\"]/div/a[2]/span")
-            WebElement userNameWar1;
+    WebElement userNameWar1;
 
     public HeaderWar1(WebDriver driver) {
         this.driver = driver;
@@ -24,10 +22,8 @@ public class HeaderWar1 {
         return userNameWar1.getText();
     }
 
-
     public void goToUserInformationViewWar1() {
         userNameWar1.click();
     }
-
 
 }

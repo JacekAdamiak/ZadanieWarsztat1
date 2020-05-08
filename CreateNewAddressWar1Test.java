@@ -10,5 +10,6 @@ import org.junit.runner.RunWith;
         plugin = {"pretty", "html:reports/out"})
 
 public class CreateNewAddressWar1Test {
+
 }
 

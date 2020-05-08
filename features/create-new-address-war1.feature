@@ -18,6 +18,6 @@ Feature: Create new address
 
 
     Examples:
-      | alias         | address     | city      | zipcode | phone       |
-      | Biurowy Janka | Przemysłowa | Wodzisław | 00-223  | 551-223-123 |
+      | alias         | address     | city      | zipcode | phone        |
+      | Biurowy Janka | Przemysłowa | Wodzisław | 00-223  | 551-223-123  |
 
